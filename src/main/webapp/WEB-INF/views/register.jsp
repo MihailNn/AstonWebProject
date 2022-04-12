@@ -15,8 +15,9 @@
 <body>
 <div class ="container">
     <section id="content">
-        <p><font color="red">${errorRegister}</font></p>
+
         <form action="/register" method="POST">
+<%--            <p><font color="red">${errorRegister}</font></p>--%>
             <h1> Регистрация нового владельца </h1> <div>
             <input placeholder="Введите имя" required=""name="newLoginName" type="text" />
         </div>

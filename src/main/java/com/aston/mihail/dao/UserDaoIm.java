@@ -17,7 +17,7 @@ public class UserDaoIm {
             statement.setString(1, login);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()) {
-                User user = new User(login, resultSet.getBytes("password"));
+                User user = new User(login, resultSet.getString("password"));
                 return Optional.of(user);
             }
         } catch (SQLException e) {
@@ -40,7 +40,7 @@ public class UserDaoIm {
                 return false;
             } else {
                 statement2.setString(1, user.getLogin());
-                statement2.setBytes(2, user.getPassword());
+                statement2.setString(2, user.getPassword());
                 statement2.executeUpdate();
             }
         } catch (SQLException e) {

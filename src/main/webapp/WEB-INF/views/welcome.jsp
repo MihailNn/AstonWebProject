@@ -31,8 +31,8 @@
 <body>
 <nav role="navigation" class="navbar navbar-default">
     <div class="">
-        <img src ="https://www.kv.by/sites/default/files/user7743/logo_iba_group.jpg" width="50"
-             height="50">
+        <img src ="/WEB-INF/images/cat_in_pipe.jpg" width="100"
+             height="100">
     </div>
     <div class="navbar-collapse">
         <ul class="nav navbar-nav">
@@ -62,7 +62,7 @@
             </tr>
         </c:forEach></table>
 <%--    <p><font color="red">${errorMessage}</font></p>--%>
-    <form method="POST" action="GroupListServlet">
+    <form method="POST" action="OwnerListServlet">
         Новый :
         <p> Введите имя <input name="name" type="text" /> </p>
         <p> Введите фамилию <input surname="surname" type="text" /> </p>

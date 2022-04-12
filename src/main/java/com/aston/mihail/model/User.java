@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 public class User {
     private int Id;
     private String login;
-    private byte[] password;
+    private String password;
 
 
-    public User(String login, byte[] password) {
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
     }

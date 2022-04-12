@@ -28,7 +28,7 @@ public class DataSourceFactory {
 //        config.setConnectionTimeout(15000); //ms
 //        config.setIdleTimeout(60000); //ms
 //        config.setMaxLifetime(600000);//ms
-        config.setAutoCommit(false);
+//        config.setAutoCommit(false);
 //        config.setMinimumIdle(5);
 //        config.setMaximumPoolSize(10);
 //        config.setPoolName("astonDbPool");

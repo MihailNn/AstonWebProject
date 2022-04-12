@@ -13,4 +13,11 @@ public class Owner {
     private String surName;
     private String email;
     private String phone;
+
+    public Owner(String name, String surName, String email, String phone) {
+        this.name = name;
+        this.surName = surName;
+        this.email = email;
+        this.phone = phone;
+    }
 }

@@ -1,5 +1,6 @@
 package com.aston.mihail.servlet;
 
+import com.aston.mihail.dao.UserDao;
 import com.aston.mihail.dao.UserDaoIm;
 import com.aston.mihail.service.HashPassword;
 import jakarta.servlet.ServletException;
@@ -11,8 +12,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-@WebServlet(name = "LoginServlet", urlPatterns = "/login")
+@WebServlet(name = "LoginServlet", urlPatterns = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
     @Override
@@ -29,19 +31,20 @@ public class LoginServlet extends HttpServlet {
 
     String login = request.getParameter("login");
     String password = request.getParameter("password");
-        UserDaoIm daoUser = new UserDaoIm();
-    if(daoUser.isValid(login, HashPassword.getHash(password))) {
-        request.getSession().setAttribute("login", login);
-        response.sendRedirect(request.getContextPath()+"/GroupListServlet");
-//        request.setAttribute("group", ListService.retrieveList());
-//        request.getRequestDispatcher("WEB-INF/welcome.jsp").
-//                forward(request, response);…
-    }
-    else {
-        request.setAttribute("errorMessage", "Invalid Login or password!!!");
-        request.getRequestDispatcher("/WEB-INF/views/login.jsp").
-                forward(request,response);
-    }
+        UserDao userDao = new UserDao();
+        try {
+            if(userDao.isValid(login, HashPassword.getHash(password))) {
+                request.getSession().setAttribute("login", login);
+                response.sendRedirect(request.getContextPath()+"/OwnerListServlet");
+            }
+            else {
+                request.setAttribute("errorMessage", "Invalid Login or password!!!");
+                request.getRequestDispatcher("/WEB-INF/views/login.jsp").
+                        forward(request,response);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
